@@ -4,8 +4,8 @@
 #include <TinyGPS++.h> // Biblioteca para comunicação com o GPS
 
 // Configuração das Credenciais Wi-Fi e Servidor
-const char* ssid = "Internet"; // Nome da rede Wi-Fi
-const char* password = "internet@internet"; // Senha do Wi-Fi
+const char* ssid = "SSID"; // Nome da rede Wi-Fi
+const char* password = "password"; // Senha do Wi-Fi
 const char* server = "https://simple-gray-papyrus.glitch.me"; // URL do servidor
 
 // Configuração do GPS
