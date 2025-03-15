@@ -5,15 +5,19 @@
 
 // Configuração das Credenciais Wi-Fi e Servidor
 const char* ssid = "SSID"; // Nome da rede Wi-Fi
-const char* password = "password"; // Senha do Wi-Fi
+const char* password = "PASSWORD"; // Senha do Wi-Fi
 const char* server = "https://simple-gray-papyrus.glitch.me"; // URL do servidor
 
 // Configuração do GPS
 #define RXD2 16 // Pino RX do ESP32 conectado ao TX do GPS
-#define TXD2 17 // Pino TX do ESP32 conectado ao RX do GPS
+#define TXD2 17  // Pino TX do ESP32 conectado ao RX do GPS
 #define GPS_BAUD 9600 // Taxa de comunicação do GPS
 TinyGPSPlus gps; // Instância do objeto GPS
 HardwareSerial gpsSerial(2); // Configuração da porta serial 2 para comunicação com o GPS
+
+const char* ambulanceID = "A1"; // ID único da ambulância
+const char* ambulanceID2 = "A2"; // ID único da ambulância
+
 // Função setup()
 void setup() {
   Serial.begin(115200); // Inicia a comunicação serial para monitoramento
@@ -51,9 +55,16 @@ void loop() {
     // Envio dos Dados ao Servidor
     if (WiFi.status() == WL_CONNECTED) {
       HTTPClient http;
-      String url = String(server) + "/update?lat=" + String(lat, 6) + "&lon=" + String(lon, 6);
+      String url = String(server) + "/update?id=" + ambulanceID + "&lat=" + String(lat, 6) + "&lon=" + String(lon, 6);
       http.begin(url);
       int httpCode = http.GET();
+      http.end();;
+
+      delay(1000);
+
+      String url2 = String(server) + "/update?id=" + ambulanceID2 + "&lat=2.828950&lon=-60.679609";
+      http.begin(url2);
+      int httpCode2 = http.GET();
       http.end();
 
       // Verificação da Resposta HTTP
