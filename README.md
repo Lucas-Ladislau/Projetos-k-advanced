@@ -24,7 +24,8 @@ Este projeto tem como objetivo implementar um sistema de rastreamento de ambulâ
    - Longiude
 4. **Monitoramento**: O sistema permite o monitoramento contínuo das ambulâncias, com atualizações dinâmicas no mapa.
 
-Contribuindo
+## Contribuindo
+
 Se você deseja contribuir para o projeto, fique à vontade para fazer um fork e enviar pull requests.
 
 Passos para Contribuir:
