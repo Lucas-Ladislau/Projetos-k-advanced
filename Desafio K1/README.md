@@ -21,15 +21,3 @@ Este projeto tem como objetivo implementar um sistema de rastreamento de ambulâ
    - Latitude
    - Longiude
 4. **Monitoramento**: O sistema permite o monitoramento contínuo das ambulâncias, com atualizações dinâmicas no mapa.
-
-## Contribuindo
-
-Se você deseja contribuir para o projeto, fique à vontade para fazer um fork e enviar pull requests.
-
-Passos para Contribuir:
-- Faça um fork do projeto
-- Crie uma nova branch ```git checkout -b minha-nova-feature```
-- Faça as alterações desejadas
-- Commit suas alterações ```git commit -am 'Adicionando nova feature'```
-- Envie para o repositório remoto ```git push origin minha-nova-feature```
-- Abra um pull request explicando as mudanças
