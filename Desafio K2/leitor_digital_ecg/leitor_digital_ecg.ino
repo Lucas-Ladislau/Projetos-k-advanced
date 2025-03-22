@@ -49,12 +49,15 @@ void loop() {
     int valorECG = analogRead(ecgPin);
     Serial.println("ECG: " + String(valorECG));
 
+    // Agora que o usuário está autenticado, envia o ID do usuário e o valor do ECG
     if (WiFi.status() == WL_CONNECTED) {
         HTTPClient http;
         http.begin(servidorURL);
         http.addHeader("Content-Type", "application/json");
 
-        String jsonPayload = "{\"ecg\": " + String(valorECG) + "}";
+        // Construindo o payload JSON com o valor do ECG e o ID do usuário
+        String jsonPayload = "{\"ecg\": " + String(valorECG) + ", \"id\": " + String(finger.fingerID) + "}";
+        
         int httpResponseCode = http.POST(jsonPayload);
 
         if (httpResponseCode > 0) {
@@ -74,14 +77,14 @@ void loop() {
 // Função para validar a digital
 bool verificarDigital() {
     Serial.println("Posicione o dedo...");
-    int id = finger.getImage();
-    if (id != FINGERPRINT_OK) return false;
+    int resultado = finger.getImage();
+    if (resultado != FINGERPRINT_OK) return false;
 
-    id = finger.image2Tz();
-    if (id != FINGERPRINT_OK) return false;
+    resultado = finger.image2Tz();
+    if (resultado != FINGERPRINT_OK) return false;
 
-    id = finger.fingerFastSearch();
-    if (id == FINGERPRINT_OK) {
+    resultado = finger.fingerFastSearch();
+    if (resultado == FINGERPRINT_OK) {
         Serial.println("Usuário autenticado!");
         return true;
     } else {
